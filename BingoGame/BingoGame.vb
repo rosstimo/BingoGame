@@ -13,5 +13,16 @@ Module BingoGame
     Sub Main(args As String())
 
     End Sub
-
+    ''' <summary>
+    ''' Returns a random integer from 0 to the max value argument
+    ''' </summary>
+    ''' <param name="max"></param>
+    ''' <returns>a random integer</returns>
+    Function RandomNumber(max As Integer) As Integer
+        Dim _randomNumber As Integer
+        ' Dim max As Integer = 10
+        Randomize()
+        _randomNumber = CInt(Math.Floor(Rnd() * (max + 1)))
+        Return _randomNumber
+    End Function
 End Module
