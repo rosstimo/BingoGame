@@ -11,6 +11,15 @@ Imports System
 
 Module BingoGame
     Sub Main(args As String())
+        'Bingo game has 75 balls
+        'each letter has a specific range
+        'B = 1 to 15
+        'I = 16 to 30
+        'N = 31 to 45
+        'G = 46 to 60
+        'O = 61 to 75
+
+        Dim bingoGrid(4, 14) As Boolean
 
     End Sub
     ''' <summary>
