@@ -8,8 +8,6 @@ Option Compare Text
 
 
 Imports System
-Imports System.ComponentModel.DataAnnotations.Schema
-Imports System.Data.Common
 
 Module BingoGame
     Sub Main(args As String())
@@ -23,19 +21,10 @@ Module BingoGame
 
         Dim bingoGrid(4, 14) As Boolean
         Display(bingoGrid)
+
+        ' Library.Test()
+        Library.RandomNumber(10)
     End Sub
-    ''' <summary>
-    ''' Returns a random integer from 0 to the max value argument
-    ''' </summary>
-    ''' <param name="max"></param>
-    ''' <returns>a random integer</returns>
-    Private Function RandomNumber(max As Integer) As Integer
-        Dim _randomNumber As Integer
-        ' Dim max As Integer = 10
-        Randomize()
-        _randomNumber = CInt(Math.Floor(Rnd() * (max + 1)))
-        Return _randomNumber
-    End Function
 
     Private Sub Display(theArray As Boolean(,))
         'ball value logic
