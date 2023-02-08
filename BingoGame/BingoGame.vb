@@ -8,6 +8,7 @@ Option Compare Text
 
 
 Imports System
+Imports System.ComponentModel.DataAnnotations.Schema
 
 Module BingoGame
     Sub Main(args As String())
@@ -23,25 +24,35 @@ Module BingoGame
         Display(bingoGrid)
 
         ' Library.Test()
-        Library.RandomNumber(10)
+        'Library.RandomNumber(10)
     End Sub
 
     Private Sub Display(theArray As Boolean(,))
-        'ball value logic
-        'add 1 to row index
-        'then add the column index times 15
         Dim temp$
+        Dim header = New String() {"B", "I", "N", "G", "O"}
+        Dim columnWidth As Integer = 5
+        For i = 0 To 4
+            temp = header(i) & " |"
+            temp = temp.PadLeft(columnWidth)
+            Console.Write(temp)
+        Next
+        Console.WriteLine()
+        Console.WriteLine(StrDup(columnWidth * 5, "-"))
+        temp = ""
         For row = 0 To 14
             For column = 0 To 4
                 temp = BallLabel(column, row) & " |"
-                Console.Write(temp.PadLeft(5))
+                Console.Write(temp.PadLeft(columnWidth))
             Next
             Console.WriteLine()
         Next
 
     End Sub
     Private Function BallLabel(column%, row%) As String
-        Return "XX"
+        'ball value logic
+        'add 1 to row index
+        'then add the column index times 15
+        Return CStr((column * 15) + (row + 1))
     End Function
 
 End Module
