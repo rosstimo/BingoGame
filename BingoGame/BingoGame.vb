@@ -31,17 +31,25 @@ Module BingoGame
         Dim temp$
         Dim header = New String() {"B", "I", "N", "G", "O"}
         Dim columnWidth As Integer = 5
+        'build and display column header
         For i = 0 To 4
             temp = header(i) & " |"
             temp = temp.PadLeft(columnWidth)
             Console.Write(temp)
         Next
         Console.WriteLine()
+        'header separator
         Console.WriteLine(StrDup(columnWidth * 5, "-"))
-        temp = ""
+        'display contents of array
+        'ball label shown only if ball has been drawn
+        theArray(1, 3) = True
         For row = 0 To 14
             For column = 0 To 4
-                temp = BallLabel(column, row) & " |"
+                temp = ""
+                If theArray(column, row) Then
+                    temp = BallLabel(column, row)
+                End If
+                temp &= " |"
                 Console.Write(temp.PadLeft(columnWidth))
             Next
             Console.WriteLine()
