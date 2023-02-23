@@ -8,7 +8,9 @@ Option Compare Text
 
 
 Imports System
-
+'TODO
+'add separate interface for console and WinForm app
+'game play should work for either
 Module BingoGame
     Sub Main(args As String())
         'Bingo game has 75 balls
