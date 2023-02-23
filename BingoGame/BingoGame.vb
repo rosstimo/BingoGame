@@ -8,7 +8,6 @@ Option Compare Text
 
 
 Imports System
-Imports System.ComponentModel.DataAnnotations.Schema
 
 Module BingoGame
     Sub Main(args As String())
@@ -21,16 +20,40 @@ Module BingoGame
         'O = 61 to 75
 
         Dim bingoGrid(4, 14) As Boolean
-        Display(bingoGrid)
+        For i = 1 To 10
+            ConsoleDisplay(bingoGrid)
+            DrawNextBall(bingoGrid)
+            '  Console.Read()
+
+        Next
 
         ' Library.Test()
         'Library.RandomNumber(10)
     End Sub
 
-    Private Sub Display(theArray As Boolean(,))
+    'start game play
+    Sub Play()
+
+    End Sub
+
+
+    'Draw random ball and update tracking array
+    Private Sub DrawNextBall(ByRef theArray As Boolean(,))
+        Dim row%, column%
+
+        Do
+            row = Library.RandomNumber(14)
+            column = Library.RandomNumber(4)
+        Loop While theArray(column, row)
+
+        theArray(column, row) = True
+
+    End Sub
+    Private Sub ConsoleDisplay(theArray As Boolean(,))
         Dim temp$
         Dim header = New String() {"B", "I", "N", "G", "O"}
         Dim columnWidth As Integer = 5
+        Console.Clear()  'start fresh
         'build and display column header
         For i = 0 To 4
             temp = header(i) & " |"
@@ -42,7 +65,6 @@ Module BingoGame
         Console.WriteLine(StrDup(columnWidth * 5, "-"))
         'display contents of array
         'ball label shown only if ball has been drawn
-        theArray(1, 3) = True
         For row = 0 To 14
             For column = 0 To 4
                 temp = ""
